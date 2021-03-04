@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onkeydown="handleKeyDown(event)" onload="gamePlay()" onkeyup="handleKeyUp(event)">
+<canvas id="canvas" width="500" height="700" ></canvas>
+<script>
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    imgBackground = new Image();
+    imgBackground.src = "background.PNG";
+
+
+    function gamePlay() {
+        game.update();
+        game.draw(ctx);
+       requestAnimationFrame(gamePlay);
+    }
+
+    function handleKeyDown(event) {
+        switch (event.keyCode) {
+            case 39 :
+                game.onRightArrowPressed();
+                break;
+            case 37 :
+                game.onLeftArrowPressed();
+                break;
+            case 32:
+                game.onSpaceButtonPressed();
+                break;
+            case 38 :
+                game.onUpArrowPressed();
+                break;
+            case 40:
+                game.onDownArrowPressed();
+                break;
+
+        }
+    }
+
+    function handleKeyUp(event) {
+        switch (event.keyCode) {
+            case 39 :
+                game.onRightArrowUp();
+                break;
+            case 37 :
+                game.onLeftArrowUp();
+                break;
+        }
+    }
+    </script>
+<script src="BouncingBallGame.js"></script>
+</body>
+</html>
